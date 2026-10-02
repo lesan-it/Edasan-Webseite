@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync, readlinkSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync, readlinkSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -73,10 +73,16 @@ test('Hostpoint pull protects existing files, validates releases, swaps atomical
     const web = join(parent, 'edasan.ch'); mkdirSync(web); writeFileSync(join(web, 'old.txt'), 'Existing website');
     const conf = join(f.dir, 'hostpoint.conf');
     const writeConf = allowed => writeFileSync(conf, `EDASAN_REPOSITORY='${f.remote}'\nEDASAN_DEPLOY_ROOT='${root}'\nEDASAN_WEB_ROOT='${web}'\nEDASAN_ALLOW_INITIAL_MIGRATION='${allowed}'\n`);
-    const run = mode => spawnSync('sh', [pullScript, conf, ...(mode ? [mode] : [])], { encoding: 'utf8' });
+    const run = mode => spawnSync('sh', ['-c', 'umask 077; exec sh "$@"', 'deployment', pullScript, conf, ...(mode ? [mode] : [])], { encoding: 'utf8' });
     writeConf('no'); assert.notEqual(run().status, 0); assert.equal(readFileSync(join(web, 'old.txt'), 'utf8'), 'Existing website');
     writeConf('yes'); const initial = run(); assert.equal(initial.status, 0, initial.stderr);
     assert.equal(readlinkSync(web), join(root, 'releases', first));
+    assert.equal(statSync(root).mode & 0o005, 0o001, 'Web server can traverse the private deployment root');
+    assert.equal(statSync(join(root, 'releases')).mode & 0o005, 0o001);
+    assert.equal(statSync(web).mode & 0o005, 0o005, 'Web server can read the active release');
+    assert.equal(statSync(join(web, 'index.html')).mode & 0o004, 0o004);
+    assert.equal(statSync(join(root, 'backups')).mode & 0o007, 0);
+    assert.equal(statSync(join(root, 'repository.git')).mode & 0o007, 0);
     assert.equal(readdirSync(join(root, 'backups')).length, 1);
     assert.equal(run().status, 0);
     publish('broken', true); const broken = run(); assert.notEqual(broken.status, 0); assert.match(broken.stderr, /Checksum failed/);

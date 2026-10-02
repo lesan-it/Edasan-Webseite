@@ -15,10 +15,10 @@ GitHub baut die Website bei Änderungen an main und stellt den geprüften Export
 ```sh
 command -v git
 command -v tar
-command -v sha256
+command -v sha256sum || command -v sha256 || test -x /sbin/sha256
 ```
 
-Auf Hostpoint/FreeBSD wird sha256 verwendet; unter Linux akzeptiert das Skript sha256sum. Falls Git fehlt, zuerst Hostpoint die Verfügbarkeit/Installation bestätigen lassen. Nicht schon den Cronjob aktivieren.
+Auf FreeBSD liegt sha256 üblicherweise unter /sbin/sha256. Das Skript nimmt /sbin deshalb in seinen eigenen Suchpfad auf; unter Linux akzeptiert es sha256sum. Falls Git fehlt, zuerst Hostpoint die Verfügbarkeit/Installation bestätigen lassen. Nicht schon den Cronjob aktivieren.
 
 ## 2. Installation ausserhalb der öffentlich erreichbaren Website
 

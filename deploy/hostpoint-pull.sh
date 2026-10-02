@@ -1,8 +1,10 @@
 #!/bin/sh
 # Pull a validated static release. Compatible with Hostpoint FreeBSD and GNU/Linux.
 set -eu
-PATH=/usr/local/bin:/usr/bin:/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export PATH
+# Public releases must remain readable even when the SSH session uses umask 077.
+umask 022
 config=${1:?Usage: sh hostpoint-pull.sh /absolute/path/hostpoint.conf [--rollback]}
 mode=${2:-deploy}
 case "$config" in /*) ;; *) echo 'Configuration path must be absolute.' >&2; exit 1;; esac
@@ -26,6 +28,7 @@ web="$parent/$(basename "$EDASAN_WEB_ROOT")"
 case "$root/" in "$web/"*) echo 'Git storage must be outside the public document root.' >&2; exit 1;; esac
 case "$web/" in "$root/"*) echo 'Document root must be outside Git storage.' >&2; exit 1;; esac
 test "$root" != "$parent" || { echo 'Deployment root must be a separate directory.' >&2; exit 1; }
+chmod 711 "$root"
 if ! mkdir "$root/deploy.lock" 2>/dev/null; then echo 'Another deployment is running (or a stale lock requires inspection).'; exit 0; fi
 stage=''; archive=''; link_tmp=''; migration_backup=''
 cleanup() {
@@ -39,6 +42,8 @@ trap cleanup 0
 trap 'exit 130' 2
 trap 'exit 143' 15
 mkdir -p "$root/releases" "$root/backups"
+chmod 711 "$root/releases"
+chmod 700 "$root/backups"
 releases=$(cd "$root/releases" && pwd -P)
 old=''
 if test -L "$web"; then
@@ -57,6 +62,7 @@ if test "$mode" = --rollback; then
 elif test "$mode" = deploy; then
   repo="$root/repository.git"
   if ! test -d "$repo"; then "$git_bin" init --bare "$repo" >/dev/null; fi
+  chmod 700 "$repo"
   "$git_bin" --git-dir="$repo" config remote.origin.url "$EDASAN_REPOSITORY"
   GIT_TERMINAL_PROMPT=0 "$git_bin" --git-dir="$repo" fetch --quiet --no-tags --depth=1 origin "$branch"
   commit=$("$git_bin" --git-dir="$repo" rev-parse FETCH_HEAD)
@@ -72,6 +78,7 @@ if ! test -f "$release/.edasan-complete"; then
   archive="$root/release-$commit.tar"
   "$git_bin" --git-dir="$repo" archive --format=tar --output="$archive" "$commit"
   tar -xf "$archive" -C "$stage"
+  chmod 755 "$stage"
   test -z "$(find "$stage" -type l -print)" || { echo 'Symlinks are not permitted in a release.' >&2; exit 1; }
   for file in index.html .htaccess robots.txt sitemap.xml api/contact.php .build-info.json SHA256SUMS; do
     test -s "$stage/$file" || { echo "Release file missing: $file" >&2; exit 1; }
