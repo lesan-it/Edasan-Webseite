@@ -1,0 +1,10 @@
+# Copy to hostpoint.conf OUTSIDE the website folder. Substitute YOUR actual paths.
+EDASAN_REPOSITORY='https://github.com/lesan-it/Edasan-Webseite.git'
+EDASAN_BRANCH='production'
+EDASAN_DEPLOY_ROOT='/home/DEIN_HOSTING_BENUTZER/edasan-deploy'
+EDASAN_WEB_ROOT='/home/DEIN_HOSTING_BENUTZER/www/edasan.ch'
+# Git must be installed on the hosting. Check: command -v git
+EDASAN_GIT_BIN='git'
+# Set to yes ONLY after confirming this exact document root is dedicated to Edasan.
+# The initial directory will be moved to a backup, not deleted.
+EDASAN_ALLOW_INITIAL_MIGRATION='no'

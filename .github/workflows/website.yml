@@ -1,0 +1,65 @@
+name: Website bauen und freigeben
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: PHP-Kontaktformular prüfen
+        run: php -l public/api/contact.php
+      - name: Export mit Prüfsummen vorbereiten
+        run: node scripts/prepare-release.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hostpoint-website
+          path: out/
+          include-hidden-files: true
+          retention-days: 14
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: website-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: hostpoint-website
+          path: ${{ runner.temp }}/edasan-export
+      - name: Erfolgreichen Export in production veröffentlichen
+        env:
+          RELEASE_SOURCE_SHA: ${{ github.sha }}
+        run: sh scripts/publish-production.sh "$RUNNER_TEMP/edasan-export"

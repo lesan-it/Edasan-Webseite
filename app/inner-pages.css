@@ -1,0 +1,131 @@
+/* One quiet page introduction for every interior route. */
+.edasan-page-hero.v15-hub-hero {
+  min-height: 450px;
+  padding: 0;
+  background: #edf3f6;
+}
+.edasan-page-hero .v15-page-hero {
+  position: relative;
+  padding-top: 145px;
+  padding-bottom: 92px;
+}
+.edasan-page-hero .v15-page-hero h1 {
+  max-width: 990px;
+  margin: 0 0 24px;
+  font-size: clamp(52px, 5.5vw, 78px);
+  line-height: 1.03;
+  letter-spacing: -.055em;
+}
+.edasan-page-hero .v15-page-hero > p {
+  max-width: 740px;
+  margin: 0;
+  color: #506b78;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.edasan-back-link {
+  position: absolute;
+  top: 74px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #4a6a79;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s cubic-bezier(.16,1,.3,1);
+}
+.edasan-back-link span { font-size: 19px; line-height: 1; font-weight: 400; }
+.edasan-back-link:hover { color: #123d51; }
+.edasan-back-link:focus-visible { outline: 2px solid #2e7897; outline-offset: 5px; }
+
+/* Titles carry the hierarchy; decorative overlines are intentionally absent. */
+.v15-section-heading h2,
+.v15-insight h2,
+.v15-related h2,
+.soft-page-cta h2,
+.v16-ai-benefits h2,
+.v16-ai-approach h2,
+.v18-example h2,
+.v18-example h3,
+.v17-careers-openings h2,
+.v15-detail-outcomes h2 { margin-top: 0; }
+.v15-experience-list article { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.v15-product { min-height: 275px; grid-template-columns: 1fr; }
+.v15-product h3 { margin-top: 0; }
+.soft-module-grid article { min-height: 230px; border: 1px solid #d5e1e5; border-radius: 13px; box-shadow: none; }
+.soft-module-grid h3 { margin-top: 0; }
+.soft-module-grid p { font-size: 16px; }
+.software-capability-grid article { min-height: 230px; border-radius: 13px; }
+.software-capability-grid h3 { margin-top: 0; }
+.software-capability-grid p { font-size: 16px; }
+.entry-offers article { min-height: 0; border-radius: 13px; }
+.entry-offers article:nth-child(2), .entry-offers article:nth-child(3) { background: #fff; }
+.entry-offers h2 { margin-top: 0; }
+.entry-offers article > div { display: block; }
+.entry-offers article > div strong { font-weight: 550; }
+.company-profile-copy h2 { margin-top: 0; }
+.automotive-preview { padding-top: 88px; padding-bottom: 95px; }
+.automotive-preview .automotive-product-ui { margin: 0; box-shadow: none; }
+.project-context article { min-height: 310px; justify-content: center; border-radius: 13px; }
+.project-context h2 { margin: 0 0 20px; }
+.project-context p,
+.project-progress > div > p { font-size: 16px; }
+.project-progress li { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 20px; }
+.project-progress h2 { margin-top: 0; }
+.project-progress li strong { font-size: 17px; }
+.project-progress li small { font-size: 14px; }
+.project-architecture-map article { justify-content: center; }
+.project-architecture-map article strong { font-size: 17px; }
+
+.edasan-contact-page .soft-contact { padding-top: 100px; padding-bottom: 110px; }
+.edasan-contact-page .soft-contact-copy { padding-top: 0; }
+.edasan-contact-page .soft-contact-copy h2 {
+  margin: 0 0 30px;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+.edasan-contact-page .soft-contact-copy dt { color: #526e79; font-size: 14px; }
+.edasan-contact-page .soft-contact-copy dd { font-size: 16px; }
+.edasan-contact-page .soft-contact-copy dd a { text-decoration: underline; text-underline-offset: 4px; }
+.edasan-contact-page .soft-contact-panel { border-radius: 13px; box-shadow: none; }
+.edasan-contact-page .soft-contact-panel > h2 { margin-top: 0; }
+.edasan-contact-page a:focus-visible { outline: 2px solid #2e7897; outline-offset: 4px; }
+
+.edasan-legal-page.legal-page { min-height: 0; padding: 0 !important; background: #fff !important; }
+.edasan-legal-body { padding-top: 88px; padding-bottom: 110px; }
+.edasan-legal-page .legal-card {
+  width: min(920px, 100%) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.edasan-legal-page .v15-page-hero h1 { margin: 0 0 24px; }
+
+@media (max-width: 820px) {
+  .edasan-page-hero.v15-hub-hero { min-height: 0; }
+  .edasan-page-hero .v15-page-hero { padding-top: 116px; padding-bottom: 75px; }
+  .edasan-back-link { top: 48px; }
+  .edasan-contact-page .soft-contact { padding-top: 80px; padding-bottom: 85px; }
+  .v15-experience-list article { grid-template-columns: 1fr; gap: 12px; }
+  .v15-experience-list p { grid-column: 1; }
+  .project-progress li { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .edasan-page-hero .v15-page-hero { padding-top: 112px; padding-bottom: 69px; }
+  .edasan-page-hero .v15-page-hero h1 { font-size: clamp(43px, 10.8vw, 55px); }
+  .edasan-page-hero .v15-page-hero > p { font-size: 16px; line-height: 1.6; }
+  .edasan-back-link { top: 42px; }
+  .edasan-legal-body { padding-top: 65px; padding-bottom: 80px; }
+  .automotive-preview { padding-top: 62px; padding-bottom: 75px; }
+  .entry-offers h2 { margin-top: 0; }
+  .project-progress li { grid-template-columns: 1fr; gap: 5px; padding: 15px 0; }
+  .project-progress li small { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edasan-back-link { transition: none; }
+}

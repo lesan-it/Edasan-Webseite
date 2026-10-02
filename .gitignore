@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+deploy/hostpoint.conf
+*.pem
+*.key
+*.pfx
+*.zip
+.DS_Store
