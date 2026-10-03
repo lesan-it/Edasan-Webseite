@@ -48,8 +48,9 @@
   margin-top: var(--edasan-space-12);
   padding-block: var(--edasan-space-8);
 }
-.soft-page .v16-ai-benefits { padding-bottom: var(--edasan-space-16); }
-.soft-page .v18-ai-example {
+.soft-page .v16-ai-benefits,
+.v15-software .v15-hub-section { padding-bottom: var(--edasan-space-16); }
+.soft-page :is(.v18-ai-example, .v18-software-example) {
   margin-top: 0;
   margin-bottom: var(--edasan-section-space);
 }
@@ -77,6 +78,49 @@
   align-items: start;
   margin-top: var(--edasan-space-6);
   padding: var(--edasan-space-8);
+}
+
+/* Quiet offer rows share the content columns used by benefits and examples. */
+.edasan-offer-list { border-top: 1px solid #cbdadf; }
+.edasan-offer-list > article {
+  padding-block: var(--edasan-space-8);
+  border-bottom: 1px solid #cbdadf;
+}
+.edasan-offer-list h3 {
+  margin: 0;
+  font-size: clamp(23px, 2.4vw, 31px);
+  line-height: 1.2;
+  letter-spacing: -.04em;
+}
+.edasan-offer-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--edasan-space-4);
+}
+.edasan-offer-copy p {
+  max-width: var(--edasan-copy-width);
+  margin: 0;
+  color: var(--soft-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+.edasan-offer-copy a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  border-bottom: 1px solid currentColor;
+  color: var(--soft-navy);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  transition: color .2s cubic-bezier(.16, 1, .3, 1);
+}
+.edasan-offer-copy a:hover { color: var(--soft-blue); }
+.v15-software a:focus-visible { outline: 2px solid #2e7897; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .edasan-offer-copy a { transition: none; }
 }
 
 /* Shared content tracks align titles, copy and links within each card row.
