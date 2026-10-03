@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/11wjxeuv8u1lq.js"],""]
+3:I[97367,["/_next/static/chunks/01xlw8hd842-c.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"legal-page section-shell","children":[["$","h1",null,{"children":"Diese Seite ist umgezogen."}],["$","p",null,{"children":["Den aktuellen Inhalt finden Sie unter ",["$","$L2",null,{"href":"/beratung/it-projekte","children":"IT-Projekte"}],"."]}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"qoYc8KsuZ6p9MI1XAAQ73"}
+5:null
