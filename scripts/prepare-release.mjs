@@ -12,7 +12,8 @@ async function walk(relative = '') {
   for (const name of (await readdir(new URL(relative, root))).sort()) {
     const file = join(relative, name);
     if (file === 'SHA256SUMS') continue;
-    if (!/^[A-Za-z0-9_.@/+~\[\]-]+$/.test(file)) throw new Error(`Unsupported release path: ${file}`);
+    // Next.js encodes route-group names in its exported navigation payloads.
+    if (!/^[A-Za-z0-9_.@/+~!$\[\]-]+$/.test(file)) throw new Error(`Unsupported release path: ${file}`);
     const info = await lstat(new URL(file, root));
     if (info.isSymbolicLink()) throw new Error(`Symlink in export: ${file}`);
     if (info.isDirectory()) await walk(file + '/');

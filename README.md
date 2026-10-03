@@ -19,6 +19,21 @@ npm test
 
 Das baut die Website und prüft Sitemap, kanonische URLs, interne Links sowie Veröffentlichung, Prüfsummen, Sicherung und Rollback in einer isolierten Testumgebung.
 
+## Sprachen und Farbschema
+
+Deutsch bleibt unter den bisherigen URLs erreichbar. Französisch, Englisch und Italienisch verwenden die Präfixe `/fr/`, `/en/` und `/it/`. Der Sprachbutton wechselt zur selben Inhaltsseite. Jede Sprachseite wird mit eigener HTML-Sprache, kanonischer URL und Sprachalternativen exportiert; die Sitemap enthält alle 84 Seiten.
+
+- `app/_pages/`: gemeinsame Seitenstruktur und deutsche Ausgangstexte
+- `app/i18n/copy.json`: französische, englische und italienische Texte (in dieser Reihenfolge)
+- `app/i18n/ui.ts`: Navigation und Formularmeldungen in allen vier Sprachen
+- `app/i18n/render.tsx`: Übersetzung der bekannten Server-Komponenten beim Build
+- `app/(de)/` und `app/(international)/`: statische Sprachrouten
+- `app/appearance.css`: Header-Bedienelemente und Navy-Farbschema
+
+Neue oder geänderte Texte müssen auch in den Übersetzungen ergänzt werden. Fehlende Übersetzungen stoppen den Build. Neue gemeinsame Server-Komponenten sind im Übersetzungsrenderer zu berücksichtigen. Die Routenauswahl in `app/i18n/routes.json` wird für die Sitemap verwendet.
+
+Das Farbschema folgt zunächst der Systemeinstellung. Eine manuelle Auswahl wird ausschliesslich als `edasan-theme` im lokalen Browserspeicher gespeichert. Das Initialisierungsskript setzt sie vor der Anzeige des Seiteninhalts; es wird kein externes Theme- oder Übersetzungssystem verwendet.
+
 ## GitHub und Hostpoint
 
 | Branch | Inhalt |

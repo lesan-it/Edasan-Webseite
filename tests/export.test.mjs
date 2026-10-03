@@ -25,7 +25,7 @@ test('Actual Next.js export can be prepared with valid release checksums', async
 test('Every sitemap page exists with its own canonical URL and crawlable HTML', async () => {
   const sitemap = await readFile(new URL('sitemap.xml', root), 'utf8');
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-  assert.equal(urls.length, 21);
+  assert.equal(urls.length, 84);
   assert.equal(new Set(urls).size, urls.length);
   for (const url of urls) {
     assert.ok(url.startsWith('https://edasan.ch/'));
@@ -33,7 +33,11 @@ test('Every sitemap page exists with its own canonical URL and crawlable HTML', 
     const html = await readFile(new URL(join(pathname.slice(1), 'index.html'), root), 'utf8');
     assert.ok(html.includes(`<link rel="canonical" href="${url}"`), url);
     assert.ok(!/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html), url);
-    assert.match(html, /<html lang="de"/);
+    const locale = pathname.match(/^\/(fr|en|it)\//)?.[1] || 'de';
+    assert.ok(html.includes(`<html lang="${locale}"`), url);
+    for (const lang of ['de-CH', 'fr-CH', 'en', 'it-CH', 'x-default']) {
+      assert.ok(html.includes(`hrefLang="${lang}"`), `${url}: missing ${lang} alternate`);
+    }
     for (const match of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)) {
       const path = match[1];
       if (path.startsWith('//') || path === '') continue;
@@ -56,4 +60,21 @@ test('Export includes Hostpoint runtime files and search engine discovery', asyn
   assert.ok(handler.includes('info@edasan.ch'));
   await access(new URL('404.html', root));
   await access(new URL('images/edasan-hero.webp', root));
+});
+
+test('Translated pages publish their content and keep internal links in the selected language', async () => {
+  const routes = JSON.parse(await readFile(new URL('../app/i18n/routes.json', import.meta.url), 'utf8'));
+  const copy = JSON.parse(await readFile(new URL('../app/i18n/copy.json', import.meta.url), 'utf8'));
+  for (const [locale, index] of [['fr', 0], ['en', 1], ['it', 2]]) {
+    const home = await readFile(new URL(`${locale}/index.html`, root), 'utf8');
+    assert.ok(home.includes(copy['Persönlich für KMU.'][index]));
+    for (const route of routes) {
+      const html = await readFile(new URL(`${locale}${route}index.html`, root), 'utf8');
+      const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
+      assert.ok(main, `${locale}${route}: missing main`);
+      for (const [, href] of main.matchAll(/href="(\/[^"?#]*)/g)) {
+        assert.ok(href.startsWith(`/${locale}/`), `${locale}${route}: link leaves selected language: ${href}`);
+      }
+    }
+  }
 });

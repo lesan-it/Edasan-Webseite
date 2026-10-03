@@ -30,6 +30,7 @@ function exportFiles(dir, source, label, corrupt = false) {
     'index.html': `<h1>${label}</h1>`, '.htaccess': 'DirectoryIndex index.html\n',
     'robots.txt': 'User-agent: *\nAllow: /\n', 'sitemap.xml': '<urlset/>',
     'api/contact.php': '<?php echo "ok";', '.build-info.json': JSON.stringify({ sourceCommit: source }),
+    'fr/__next.!KGludGVybmF0aW9uYWwp.$d$locale.$oc$segments.__PAGE__.txt': 'Navigation payload',
     [`_next/static/${label}.js`]: `console.log('${label}')`,
   };
   const sums = [];
@@ -77,6 +78,7 @@ test('Hostpoint pull protects existing files, validates releases, swaps atomical
     writeConf('no'); assert.notEqual(run().status, 0); assert.equal(readFileSync(join(web, 'old.txt'), 'utf8'), 'Existing website');
     writeConf('yes'); const initial = run(); assert.equal(initial.status, 0, initial.stderr);
     assert.equal(readlinkSync(web), join(root, 'releases', first));
+    assert.equal(readFileSync(join(web, 'fr/__next.!KGludGVybmF0aW9uYWwp.$d$locale.$oc$segments.__PAGE__.txt'), 'utf8'), 'Navigation payload');
     assert.equal(statSync(root).mode & 0o005, 0o001, 'Web server can traverse the private deployment root');
     assert.equal(statSync(join(root, 'releases')).mode & 0o005, 0o001);
     assert.equal(statSync(web).mode & 0o005, 0o005, 'Web server can read the active release');

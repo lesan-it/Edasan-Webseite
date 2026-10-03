@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { company } from "../company";
+import { localeHref, type Locale } from "../i18n/routing";
+import { ui, type ContactLabels } from "../i18n/ui";
 
 type SendMode = "email-app" | "direct";
 
-export default function ContactForm() {
+export default function ContactForm({ locale = "de", labels = ui.de.contact }: { locale?: Locale; labels?: ContactLabels }) {
   const [mode, setMode] = useState<SendMode>("email-app");
   const [state, setState] = useState<"idle" | "working" | "prepared" | "sent" | "error">("idle");
 
@@ -34,8 +36,8 @@ export default function ContactForm() {
     if (!data.name || !data.email || !data.message) return;
 
     if (mode === "email-app") {
-      const subject = encodeURIComponent("Anfrage über die Edasan Website");
-      const body = encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\nUnternehmen: ${data.business || "–"}\n\nAnliegen:\n${data.message}`);
+      const subject = encodeURIComponent(labels.subject);
+      const body = encodeURIComponent(`${labels.name}: ${data.name}\n${labels.email}: ${data.email}\n${labels.company}: ${data.business || "–"}\n\n${labels.message}:\n${data.message}`);
       window.location.href = `mailto:${company.email}?subject=${subject}&body=${body}`;
       setState("prepared");
       return;
@@ -58,16 +60,17 @@ export default function ContactForm() {
 
   return <form className="edasan-contact-form" onSubmit={handleSubmit}>
     <div className="edasan-contact-fields">
-      <label htmlFor="contact-name">Name<input id="contact-name" name="name" type="text" autoComplete="name" maxLength={100} required /></label>
-      <label htmlFor="contact-email">E-Mail-Adresse<input id="contact-email" name="email" type="email" autoComplete="email" maxLength={254} required /></label>
+      <label htmlFor="contact-name">{labels.name}<input id="contact-name" name="name" type="text" autoComplete="name" maxLength={100} required /></label>
+      <label htmlFor="contact-email">{labels.email}<input id="contact-email" name="email" type="email" autoComplete="email" maxLength={254} required /></label>
     </div>
-    <label htmlFor="contact-business">Unternehmen <span>(optional)</span><input id="contact-business" name="business" type="text" autoComplete="organization" maxLength={120} /></label>
-    <label htmlFor="contact-message">Ihr Anliegen<textarea id="contact-message" name="message" rows={5} maxLength={2000} required /></label>
+    <label htmlFor="contact-business">{labels.company} <span>{labels.optional}</span><input id="contact-business" name="business" type="text" autoComplete="organization" maxLength={120} /></label>
+    <label htmlFor="contact-message">{labels.message}<textarea id="contact-message" name="message" rows={5} maxLength={2000} required /></label>
     <div className="edasan-contact-honeypot" aria-hidden="true"><label htmlFor="contact-website">Website<input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" /></label></div>
-    <p className="edasan-contact-hint">{mode === "direct" ? <>Ihre Angaben werden zur Bearbeitung der Anfrage an uns übermittelt. <Link href="/datenschutz">Datenschutz</Link></> : <>Das Formular öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Bitte senden Sie diese dort ab. <Link href="/datenschutz">Datenschutz</Link></>}</p>
-    <button className="soft-btn soft-btn-dark" type="submit" disabled={state === "working"}>{state === "working" ? "Wird gesendet …" : mode === "direct" ? "Anfrage senden" : "E-Mail vorbereiten"}</button>
-    {state === "prepared" && <p className="edasan-contact-feedback" role="status">Bitte senden Sie die vorbereitete Nachricht in Ihrem E-Mail-Programm ab. Falls es sich nicht geöffnet hat, schreiben Sie direkt an <a href={`mailto:${company.email}`}>{company.email}</a>.</p>}
-    {state === "sent" && <p className="edasan-contact-feedback" role="status">Danke, Ihre Anfrage wurde übermittelt. Wir melden uns bei Ihnen.</p>}
-    {state === "error" && <p className="edasan-contact-feedback error" role="alert">Die Übermittlung konnte nicht bestätigt werden. Bitte schreiben Sie direkt an <a href={`mailto:${company.email}`}>{company.email}</a>.</p>}
+    <p className="edasan-contact-hint">{mode === "direct" ? labels.directHint : labels.emailHint} <Link href={localeHref(locale, "/datenschutz/")}>{labels.privacy}</Link></p>
+    <button className="soft-btn soft-btn-dark" type="submit" disabled={state === "working"}>{state === "working" ? labels.sending : mode === "direct" ? labels.send : labels.prepare}</button>
+    {state === "prepared" && <p className="edasan-contact-feedback" role="status">{labels.prepared} <a href={`mailto:${company.email}`}>{company.email}</a>.</p>}
+    {state === "sent" && <p className="edasan-contact-feedback" role="status">{labels.sent}</p>}
+    {state === "error" && <p className="edasan-contact-feedback error" role="alert">{labels.error} <a href={`mailto:${company.email}`}>{company.email}</a>.</p>}
+
   </form>;
 }

@@ -1,5 +1,0 @@
-import LegacyRedirect from "../../legacy-redirect";
-
-export default function LegacyProjectsPage() {
-  return <LegacyRedirect href="/beratung/it-projekte" label="IT-Projekte" />;
-}
