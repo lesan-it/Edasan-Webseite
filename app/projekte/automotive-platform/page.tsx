@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../../page-hero";
-import { OfferRows } from "../../content-sections";
+import { OfferCards, OfferRows } from "../../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/projekte/automotive-platform/" },
   title: "Automotive Commerce Platform",
@@ -29,7 +29,7 @@ export default function AutomotivePlatformPage() {
       { title: "Eine Plattform für den gesamten Fahrzeug-Lifecycle.", text: "Das öffentliche Erlebnis und die internen Abläufe greifen auf eine gemeinsame strukturierte Grundlage zu. Rollen sehen genau die Informationen und nächsten Schritte, die sie benötigen." },
     ]} /></section>
 
-    <section className="project-modules"><div className="soft-shell"><div className="soft-section-head compact edasan-split"><div><h2>Commerce, Operations und Intelligence verbunden.</h2></div><p>Die Module werden schrittweise entwickelt und bleiben unabhängig erweiterbar.</p></div><div className="software-capability-grid edasan-card-grid">{modules.map(([title,text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section className="project-modules"><div className="soft-shell"><div className="soft-section-head compact edasan-split"><div><h2>Commerce, Operations und Intelligence verbunden.</h2></div><p>Die Module werden schrittweise entwickelt und bleiben unabhängig erweiterbar.</p></div><OfferCards columns={3} offers={modules.map(([title, text]) => ({ title, text }))} /></div></section>
 
     <section className="project-architecture"><div className="soft-shell edasan-split"><div><h2>Eine Datenbasis. Mehrere Erlebnisse.</h2></div><div className="project-architecture-map"><article><strong>Fahrzeugportal</strong></article><i /><article className="core"><strong>Rollen · Daten · Workflows</strong></article><i /><article><strong>Dealer OS</strong></article></div></div></section>
 

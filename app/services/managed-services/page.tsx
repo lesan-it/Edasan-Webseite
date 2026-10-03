@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../../page-hero";
-import { OfferRows } from "../../content-sections";
+import { OfferCards } from "../../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/services/managed-services/" }, title: "Managed IT Services", description: "Planbarer IT-Betrieb und persönlicher Support für Schweizer Unternehmen." };
 
@@ -20,10 +20,10 @@ export default function ManagedPage() {
 
     <section className="soft-managed-modules"><div className="soft-shell">
       <div className="soft-section-head compact edasan-split"><div><h2>Wir kümmern uns darum.</h2></div><p>Wählen Sie einzelne Bausteine oder einen durchgängigen Service. Wir richten die Zusammenarbeit an Ihrer Organisation aus.</p></div>
-      <OfferRows offers={modules.map(([title, text]) => ({ title, text }))} />
+      <OfferCards offers={modules.map(([title, text]) => ({ title, text }))} />
     </div></section>
 
-    <section className="soft-shell soft-section edasan-service-levels"><header className="v15-section-heading"><h2>Passend zu Ihrem Alltag.</h2></header><OfferRows offers={[
+    <section className="soft-shell soft-section edasan-service-levels"><header className="v15-section-heading"><h2>Passend zu Ihrem Alltag.</h2></header><OfferCards columns={3} offers={[
       { title: "Essential", text: "Eine klare Basis für kleine und fokussierte Teams." },
       { title: "Business", text: "Proaktiver Betrieb mit regelmässiger Weiterentwicklung." },
       { title: "Custom", text: "Individuell für anspruchsvolle Systeme und Anforderungen." },

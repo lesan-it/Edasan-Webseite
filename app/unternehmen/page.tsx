@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../page-hero";
-import { OfferRows } from "../content-sections";
+import { OfferCards } from "../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/unternehmen/" }, title: "Über Edasan", description: "Edasan – unabhängiges Technologieunternehmen aus der Region Bern." };
 
@@ -28,9 +28,9 @@ export default function CompanyPage() {
       <div className="company-profile-copy edasan-offer-copy"><p>Edasan ist ein unabhängiges Technologieunternehmen aus der Region Bern. Wir unterstützen den IT-Betrieb, führen technische Vorhaben weiter und entwickeln Anwendungen, wenn vorhandene Werkzeuge nicht passen.</p><div className="soft-actions"><Link className="soft-btn soft-btn-dark" href="/kontakt">Zusammenarbeit besprechen</Link><Link className="soft-text-link" href="/services">Leistungen ansehen</Link></div></div>
     </section>
 
-    <section className="soft-values"><div className="soft-shell"><div className="edasan-card-grid edasan-card-grid--plain">{values.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section className="soft-values"><div className="soft-shell"><OfferCards columns={3} offers={values.map(([title, text]) => ({ title, text }))} /></div></section>
 
-    <section className="company-competence soft-shell soft-section"><header className="edasan-split"><div><h2>Erfahrung für Planung und Betrieb.</h2></div><p>Das Team bringt Erfahrung in Workplace- und Endpoint-Engineering, Infrastruktur sowie technischer Projektleitung mit. Diese Praxis hilft auch dann, wenn mehrere Systeme und Beteiligte zusammenspielen müssen.</p></header><OfferRows offers={competence.map(([title, text]) => ({ title, text }))} /><aside><strong>Was das für Sie bedeutet</strong><p>Technische Fragen werden früh geklärt. Umsetzung und Übergabe werden zusammen gedacht, damit eine Lösung später betreut werden kann.</p></aside></section>
+    <section className="company-competence soft-shell soft-section"><header className="edasan-split"><div><h2>Erfahrung für Planung und Betrieb.</h2></div><p>Das Team bringt Erfahrung in Workplace- und Endpoint-Engineering, Infrastruktur sowie technischer Projektleitung mit. Diese Praxis hilft auch dann, wenn mehrere Systeme und Beteiligte zusammenspielen müssen.</p></header><OfferCards columns={3} offers={competence.map(([title, text]) => ({ title, text }))} /><aside><strong>Was das für Sie bedeutet</strong><p>Technische Fragen werden früh geklärt. Umsetzung und Übergabe werden zusammen gedacht, damit eine Lösung später betreut werden kann.</p></aside></section>
 
 
     <section className="soft-shell soft-page-cta"><div><h2>Erzählen Sie uns, was ansteht.</h2></div><Link className="soft-btn soft-btn-light" href="/kontakt">Gespräch vereinbaren</Link></section>

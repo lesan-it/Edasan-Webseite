@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfferCards } from "./content-sections";
 
 export const metadata: Metadata = {
   title: { absolute: "Edasan GmbH – IT Services, Software & KI" },
@@ -47,13 +48,7 @@ export default function Home() {
 
         <h2>Wobei wir Sie unterstützen.</h2>
       </div>
-      <div className="v15-path-grid edasan-card-grid edasan-card-grid--links edasan-card-grid--paths">
-        {areas.map((area) => <article className="v15-path" key={area.title}>
-          <h3>{area.title}</h3>
-          <p>{area.text}</p>
-          <Link href={area.href}>{area.link}</Link>
-        </article>)}
-      </div>
+      <OfferCards columns={3} offers={areas} />
     </section>
 
     <section className="v15-insight"><div className="soft-shell v15-insight-inner edasan-split">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../page-hero";
+import { OfferCards } from "../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/software/" }, title: "Software & Portale", description: "Individuelle Portale, Web-Applikationen und Eigenentwicklungen von Edasan." };
 
@@ -14,12 +15,7 @@ export default function SoftwarePage() {
     <PageHero title="Software für die Arbeit, die wirklich anfällt." lead="Informationen liegen in Mails, Listen und mehreren Systemen? Wir entwickeln Anwendungen, die Abläufe zusammenführen – und bauen eigene Produkte für wiederkehrende Aufgaben." />
     <section className="soft-shell v15-hub-section">
       <header className="v15-section-heading"><h2>Software, die zu Ihnen passt.</h2></header>
-      <div className="edasan-offer-list">
-        {paths.map(([title, text, href, label]) => <article className="edasan-split" key={href}>
-          <h3>{title}</h3>
-          <div className="edasan-offer-copy"><p>{text}</p><Link href={href}>{label}</Link></div>
-        </article>)}
-      </div>
+      <OfferCards offers={paths.map(([title, text, href, link]) => ({ title, text, href, link }))} />
     </section>
     <section className="soft-shell v18-example v18-software-example edasan-split">
       <h2>Eine Anfrage. Ein klarer Ablauf.</h2>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../page-hero";
+import { OfferCards } from "../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/beratung/" }, title: "Beratung & Projekte", description: "IT-Beratung, technische Projektleitung, Migration und Rollout für Schweizer Unternehmen." };
 
@@ -14,12 +15,7 @@ export default function ConsultingPage() {
     <PageHero title="Veränderung braucht einen klaren Weg." lead="Ein Rollout steht an, eine Migration ist festgefahren oder für ein Vorhaben fehlt intern die Kapazität? Wir bringen technische Erfahrung ein und begleiten die Umsetzung bis zur Übergabe." />
     <section className="soft-shell v15-hub-section">
       <header className="v15-section-heading"><h2>Von der Frage zur Umsetzung.</h2></header>
-      <div className="edasan-offer-list">
-        {offers.map(([title, text, href, label]) => <article className="edasan-split" key={href}>
-          <h3>{title}</h3>
-          <div className="edasan-offer-copy"><p>{text}</p><Link href={href}>{label}</Link></div>
-        </article>)}
-      </div>
+      <OfferCards offers={offers.map(([title, text, href, link]) => ({ title, text, href, link }))} />
     </section>
     <section className="soft-shell v18-example v18-consulting-example edasan-split">
       <h2>Typische Vorhaben.</h2>

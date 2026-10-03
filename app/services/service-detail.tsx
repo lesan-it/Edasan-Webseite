@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHero from "../page-hero";
-import { OfferRows } from "../content-sections";
+import { OfferCards } from "../content-sections";
 
 export type ServiceDetailData = {
   parentHref?: string;
@@ -19,7 +19,7 @@ export default function ServiceDetail({ data }: { data: ServiceDetailData }) {
 
     <section className="soft-shell v15-detail-promise edasan-split"><h2>{data.promiseTitle}</h2><p>{data.promiseText}</p></section>
 
-    <section className="soft-shell v15-hub-section"><div className="v15-section-heading"><h2>Was wir konkret übernehmen.</h2></div><OfferRows offers={data.modules} /></section>
+    <section className="soft-shell v15-hub-section"><div className="v15-section-heading"><h2>Was wir konkret übernehmen.</h2></div><OfferCards offers={data.modules} /></section>
 
     <section className="soft-shell v15-detail-outcomes edasan-split"><div><h2>Worauf es am Ende ankommt.</h2></div><ul>{data.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></section>
 
