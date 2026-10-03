@@ -10,7 +10,7 @@ export default function ContactPage() {
     <PageHero title="Was soll einfacher werden?" lead="Ein Thema im IT-Betrieb, ein anstehendes Projekt oder eine Software-Idee? Wir freuen uns auf Ihre Nachricht." />
     <section className="soft-shell soft-contact edasan-split">
     <div className="soft-contact-copy"><h2>Direkt erreichbar.</h2><dl><div><dt>Telefon</dt><dd><a href={company.phone.href}>{company.phone.display}</a></dd></div><div><dt>E-Mail</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd></div><div><dt>Standort</dt><dd>Gümligen · Region Bern</dd></div><div><dt>Adresse</dt><dd>Worbstrasse 198 · 3073 Gümligen</dd></div></dl></div>
-    <div className="soft-contact-panel v16-contact-panel"><h2>Erzählen Sie uns von Ihrem Vorhaben.</h2><p>Ein paar Sätze zur Ausgangslage reichen für den Anfang.</p>
+    <div className="soft-contact-panel v16-contact-panel">
       <ContactForm />
     </div>
   </section></main>;
