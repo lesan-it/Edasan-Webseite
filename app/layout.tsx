@@ -3,6 +3,7 @@ import "./globals.css";
 import "./soft.css";
 import "./refinement-v15.css";
 import "./inner-pages.css";
+import "./layout-system.css";
 import SiteChrome from "./site-chrome";
 
 export const metadata: Metadata = {

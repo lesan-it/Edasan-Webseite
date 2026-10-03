@@ -1,0 +1,216 @@
+/* Shared spacing and content alignment, after the page-specific styles. */
+:root {
+  --edasan-space-2: 8px;
+  --edasan-space-4: 16px;
+  --edasan-space-6: 24px;
+  --edasan-space-8: 32px;
+  --edasan-space-10: 40px;
+  --edasan-space-12: 48px;
+  --edasan-space-16: 64px;
+  --edasan-space-24: 96px;
+  --edasan-section-space: var(--edasan-space-24);
+  --edasan-column-gap: clamp(32px, 5vw, 64px);
+  --edasan-content-columns: minmax(0, 5fr) minmax(0, 7fr);
+  --edasan-copy-width: 60ch;
+  --edasan-card-padding: var(--edasan-space-8);
+}
+
+:is(.soft-page, .home-v15) .edasan-split {
+  display: grid;
+  grid-template-columns: var(--edasan-content-columns);
+  gap: var(--edasan-column-gap);
+  align-items: start;
+}
+.edasan-split > * { min-width: 0; }
+.edasan-split > :is(h2, h3, p),
+.edasan-split > div > :is(h2, h3, p):first-child { margin-top: 0; }
+.edasan-split > :is(h2, h3),
+.edasan-split > div > :is(h2, h3):last-child { margin-bottom: 0; }
+.edasan-split > p,
+.edasan-split > div:last-child > p {
+  max-width: var(--edasan-copy-width);
+}
+.edasan-split > p,
+.edasan-split > div:last-child > p:last-child { margin-bottom: 0; }
+
+.soft-page :is(.soft-section, .v15-hub-section, .v15-product-section,
+  .v16-ai-benefits, .v17-careers-openings, .edasan-legal-body),
+.soft-page :is(.soft-managed-modules, .project-modules, .project-architecture,
+  .soft-values, .entry-followup, .v16-ai-approach),
+.home-v15 :is(.v15-paths, .v15-insight) {
+  padding-block: var(--edasan-section-space);
+}
+.soft-page .soft-contact { padding-block: var(--edasan-section-space); }
+.soft-page .automotive-preview { padding-block: var(--edasan-section-space); }
+.soft-page :is(.v15-section-heading, .soft-section-head, .company-competence > header),
+.home-v15 .v15-section-heading { margin-bottom: var(--edasan-space-10); }
+.soft-page .v18-example {
+  margin-top: var(--edasan-space-12);
+  padding-block: var(--edasan-space-8);
+}
+.soft-page .v16-ai-benefits { padding-bottom: var(--edasan-space-16); }
+.soft-page .v18-ai-example {
+  margin-top: 0;
+  margin-bottom: var(--edasan-section-space);
+}
+.soft-page :is(.v18-entry-note, .v18-case-strip) {
+  margin-top: var(--edasan-space-12);
+  padding-block: var(--edasan-space-8);
+}
+.soft-page .v18-case-strip ul { gap: var(--edasan-space-6); }
+.soft-page .v15-detail-promise { padding-block: var(--edasan-section-space); }
+.soft-page :is(.v15-related, .v15-detail-outcomes, .v17-careers-contact) {
+  padding-block: var(--edasan-space-10);
+  gap: var(--edasan-column-gap);
+}
+.soft-page :is(.v16-ai-benefit-list, .v15-experience-list) > article {
+  min-height: 120px;
+  padding-block: var(--edasan-space-8);
+}
+.soft-page :is(.v16-ai-benefit-list, .v15-experience-list) > article p { line-height: 1.65; }
+.soft-page .v15-experience-list p { grid-column: auto; }
+.soft-page .company-profile,
+.soft-page .v17-careers-contact { margin-bottom: var(--edasan-section-space); }
+.soft-page .company-competence aside {
+  grid-template-columns: var(--edasan-content-columns);
+  gap: var(--edasan-column-gap);
+  align-items: start;
+  margin-top: var(--edasan-space-6);
+  padding: var(--edasan-space-8);
+}
+
+/* Shared content tracks align titles, copy and links within each card row.
+   Flex is the fallback; subgrid lets wrapped headings determine the track size. */
+:is(.soft-page, .home-v15) .edasan-card-grid {
+  --edasan-card-rows: 2;
+  gap: var(--edasan-space-6);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+:is(.soft-page, .home-v15) .edasan-card-grid--links { --edasan-card-rows: 3; }
+.soft-page .edasan-card-grid--detailed { --edasan-card-rows: 5; }
+:is(.soft-page, .home-v15) .edasan-card-grid > article {
+  min-width: 0;
+  min-height: 230px;
+  padding: var(--edasan-card-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: var(--edasan-space-4);
+  border: 1px solid var(--soft-line);
+  border-radius: 13px;
+}
+:is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3, p, ul, div, a) {
+  margin-block: 0;
+}
+:is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3) { line-height: 1.2; }
+:is(.soft-page, .home-v15) .edasan-card-grid > article > p {
+  max-width: var(--edasan-copy-width);
+  font-size: 16px;
+  line-height: 1.65;
+}
+:is(.soft-page, .home-v15) .edasan-card-grid > article > a {
+  margin-top: auto;
+  align-self: start;
+}
+.soft-page .edasan-card-grid--detailed > article { min-height: 0; }
+.soft-page .edasan-card-grid--detailed > article > a { width: 100%; }
+.soft-page .soft-values .edasan-card-grid--plain > article {
+  min-height: 0;
+  padding: var(--edasan-space-6) 0;
+  border: 0;
+  border-top: 1px solid #b9ced1;
+  border-radius: 0;
+  background: transparent;
+}
+.soft-page .soft-values .edasan-card-grid--plain { gap: var(--edasan-space-6); }
+.home-v15 .edasan-card-grid--paths {
+  gap: 0;
+  border-block: 1px solid #cbdadf;
+}
+.home-v15 .edasan-card-grid--paths > article {
+  min-height: 260px;
+  padding: var(--edasan-space-8);
+  border: 0;
+  border-radius: 0;
+}
+.home-v15 .edasan-card-grid--paths > article:first-child { padding-left: 0; }
+.home-v15 .edasan-card-grid--paths > article:not(:first-child) { border-left: 1px solid #cbdadf; }
+
+@supports (grid-template-rows: subgrid) {
+  :is(.soft-page, .home-v15) .edasan-card-grid > article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span var(--edasan-card-rows);
+    row-gap: var(--edasan-space-4);
+    align-content: start;
+  }
+  :is(.soft-page, .home-v15) .edasan-card-grid > article > a { align-self: end; }
+}
+
+.soft-page .v15-product > div:first-child { padding: var(--edasan-card-padding); gap: var(--edasan-space-6); }
+.soft-page .v15-product :is(h3, p, a) { margin-block: 0; }
+.soft-page .v15-product p { max-width: var(--edasan-copy-width); }
+.soft-page .v15-product a { margin-top: auto; }
+.soft-page .company-profile-copy { padding: var(--edasan-space-12); }
+.soft-page .company-profile-copy h3 { margin-bottom: var(--edasan-space-6); }
+.soft-page .v16-contact-panel { padding: var(--edasan-space-10); }
+.soft-page .v16-contact-panel > h2 { margin-block: 0 var(--edasan-space-6); }
+.soft-page .v16-contact-panel > p { margin-bottom: var(--edasan-space-8); }
+.soft-page .edasan-contact-fields { gap: var(--edasan-space-6); }
+.soft-page .edasan-contact-form { gap: var(--edasan-space-6); }
+.soft-page .project-progress > div > p { margin-top: var(--edasan-space-6); }
+:is(.soft-page, .home-v15) :is(.soft-page-cta, .v15-home-cta) {
+  min-height: 0;
+  margin-block: var(--edasan-section-space);
+  padding: var(--edasan-space-12);
+  gap: var(--edasan-space-10);
+}
+:is(.soft-page, .home-v15) :is(.soft-page-cta, .v15-home-cta) h2 { margin: 0; }
+
+@media (max-width: 920px) {
+  :root { --edasan-section-space: 72px; --edasan-column-gap: 32px; }
+  :is(.soft-page, .home-v15) .edasan-split,
+  .soft-page .company-competence aside { grid-template-columns: minmax(0, 1fr); gap: var(--edasan-space-6); }
+  .soft-page :is(.v16-ai-benefit-list, .v15-experience-list) > article {
+    min-height: 0;
+    gap: var(--edasan-space-4);
+  }
+  .soft-page .company-profile-copy { padding: var(--edasan-space-8); }
+  .home-v15 .edasan-card-grid--paths { grid-template-columns: minmax(0, 1fr); }
+  .home-v15 .edasan-card-grid--paths > article,
+  .home-v15 .edasan-card-grid--paths > article:first-child {
+    display: flex;
+    grid-row: auto;
+    min-height: 0;
+    padding: var(--edasan-space-6) 0;
+  }
+  .home-v15 .edasan-card-grid--paths > article:not(:first-child) {
+    border-left: 0;
+    border-top: 1px solid #cbdadf;
+  }
+}
+
+@media (max-width: 560px) {
+  :root { --edasan-section-space: 64px; --edasan-card-padding: 24px; }
+  :is(.soft-page, .home-v15) .edasan-card-grid { grid-template-columns: minmax(0, 1fr); }
+  :is(.soft-page, .home-v15) .edasan-card-grid > article {
+    display: flex;
+    grid-row: auto;
+    min-height: 0;
+    padding: var(--edasan-card-padding);
+  }
+  .home-v15 .edasan-card-grid--paths > article,
+  .home-v15 .edasan-card-grid--paths > article:first-child {
+    padding: var(--edasan-space-6) 0;
+  }
+  .home-v15 .edasan-card-grid--paths > article:not(:first-child) {
+    border-left: 0;
+    border-top: 1px solid #cbdadf;
+  }
+  .soft-page .soft-values .edasan-card-grid--plain > article { padding-inline: 0; }
+  .soft-page .v16-contact-panel { padding: var(--edasan-space-6); }
+  :is(.soft-page, .home-v15) :is(.soft-page-cta, .v15-home-cta) { padding: var(--edasan-space-8) var(--edasan-space-6); }
+}

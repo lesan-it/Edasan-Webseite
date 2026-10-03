@@ -21,7 +21,7 @@ export default function CareersPage() {
   return <main className="soft-page v17-careers">
     <PageHero title="Arbeiten bei Edasan." lead="Wir sind in IT Services, Beratung und Software tätig. Offene Stellen finden Sie hier." />
 
-    <section className="soft-shell v17-careers-openings" aria-labelledby="career-openings-title">
+    <section className="soft-shell v17-careers-openings edasan-split" aria-labelledby="career-openings-title">
       <div><h2 id="career-openings-title">Offene Stellen.</h2></div>
       <div className="v17-careers-list">
         {positions.length > 0 ? positions.map((position) => <Link className="v17-careers-position" href={position.href} key={position.href}>

@@ -21,12 +21,12 @@ export default function IntelligencePage() {
 
       <h2>Praktischer Nutzen für Ihr Team.</h2>
     </header><div className="v16-ai-benefit-list">
-      {benefits.map(([title, description]) => <article key={title}><h3>{title}</h3><p>{description}</p></article>)}
+      {benefits.map(([title, description]) => <article className="edasan-split" key={title}><h3>{title}</h3><p>{description}</p></article>)}
     </div></section>
 
-    <section className="soft-shell v18-example v18-ai-example"><div><h2>Antworten aus internem Wissen.</h2></div><p>Eine Frage zu einer internen Anleitung: Statt Ordner zu durchsuchen, kann eine passende Lösung relevante Stellen in freigegebenen Dokumenten mit Quellenhinweis zeigen. Welche Informationen sie nutzt, wird vorher festgelegt.</p></section>
+    <section className="soft-shell v18-example v18-ai-example edasan-split"><div><h2>Antworten aus internem Wissen.</h2></div><p>Eine Frage zu einer internen Anleitung: Statt Ordner zu durchsuchen, kann eine passende Lösung relevante Stellen in freigegebenen Dokumenten mit Quellenhinweis zeigen. Welche Informationen sie nutzt, wird vorher festgelegt.</p></section>
 
-    <section className="v16-ai-approach"><div className="soft-shell v16-ai-approach-inner">
+    <section className="v16-ai-approach"><div className="soft-shell v16-ai-approach-inner edasan-split">
       <div><h2>Lokal oder kontrolliert verbunden.</h2></div>
       <p>Je nach Anforderung kann eine Lösung in Ihrer eigenen Umgebung arbeiten oder ausgewählte externe Quellen einbeziehen. Gemeinsam legen wir fest, welche Daten und Systeme zugänglich sind und wo Freigaben nötig bleiben.</p>
     </div></section>

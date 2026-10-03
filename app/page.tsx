@@ -47,7 +47,7 @@ export default function Home() {
 
         <h2>Wobei wir Sie unterstützen.</h2>
       </div>
-      <div className="v15-path-grid">
+      <div className="v15-path-grid edasan-card-grid edasan-card-grid--links edasan-card-grid--paths">
         {areas.map((area) => <article className="v15-path" key={area.title}>
           <h3>{area.title}</h3>
           <p>{area.text}</p>
@@ -56,7 +56,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="v15-insight"><div className="soft-shell v15-insight-inner">
+    <section className="v15-insight"><div className="soft-shell v15-insight-inner edasan-split">
       <div><h2>Erfahrung, die in der Umsetzung zählt.</h2></div>
       <div><p>Das Team hat schweizweite Workplace-Rollouts und komplexe Windows-Umgebungen mitgestaltet. Bei Edasan entstehen zudem eigene Softwareprodukte aus konkreten Anforderungen.</p>
         <div className="v15-insight-links"><Link href="/projekte">Projekte &amp; Erfahrung</Link><Link href="/software/eigenentwicklungen">Eigenentwicklungen</Link><Link href="/ki-automatisierung">KI &amp; Automatisierung</Link></div>
