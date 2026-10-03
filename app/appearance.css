@@ -43,43 +43,47 @@
   .edasan-language-button { min-width: 52px; padding-inline: 8px; }
 }
 @media (max-width: 820px) { .v15-header .soft-header-inner { width: calc(100% - 28px); } }
-/* The brand's navy replaces paper; charcoal distinguishes secondary surfaces. */
+/* Deep navy and blue-tinted graphite keep dark surfaces in one colour family. */
 html[data-theme="dark"] {
   color-scheme: dark;
-  --edasan-page-bg: #073b57;
+  --edasan-page-bg: #0b1726;
+  --edasan-surface: #192735;
+  --edasan-surface-hover: #223447;
+  --edasan-accent-surface: #203c56;
+  --edasan-footer-bg: #08121f;
   --soft-ink: #e7edf0;
   --soft-muted: #cbd6dc;
   --soft-blue: #93c6dc;
-  --soft-line: #4b6573;
+  --soft-line: #42596d;
   --ink: #e7edf0;
   --muted: #cbd6dc;
-  --line: #4b6573;
+  --line: #42596d;
 }
 [data-theme="dark"] body,
 [data-theme="dark"] :is(.soft-main, .soft-page, .legal-page) { background: var(--edasan-page-bg); color: var(--soft-ink); }
 [data-theme="dark"] .edasan-legal-page .legal-card { background: var(--edasan-page-bg); }
-[data-theme="dark"] .v15-header { background: rgba(7,59,87,.96); border-color: var(--soft-line); }
+[data-theme="dark"] .v15-header { background: rgba(11,23,38,.96); border-color: var(--soft-line); }
 [data-theme="dark"] .v15-header nav { color: var(--soft-ink); border-color: var(--soft-line); }
 [data-theme="dark"] .v15-header nav > a { border-color: var(--soft-line); }
 [data-theme="dark"] .v15-header nav > a.active::after { background: #93c6dc; }
 [data-theme="dark"] .v15-header .soft-menu,
 [data-theme="dark"] .edasan-header-button { background: transparent; color: var(--soft-ink); border-color: var(--soft-line); }
 [data-theme="dark"] .v15-header .soft-menu i { background: var(--soft-ink); }
-[data-theme="dark"] .edasan-header-button:hover { background: #0b4b69; }
-[data-theme="dark"] .edasan-language-options { background: #26343e; border-color: var(--soft-line); }
+[data-theme="dark"] .edasan-header-button:hover { background: var(--edasan-accent-surface); }
+[data-theme="dark"] .edasan-language-options { background: var(--edasan-surface); border-color: var(--soft-line); }
 [data-theme="dark"] .edasan-language-options a:hover,
-[data-theme="dark"] .edasan-language-options a[aria-current="true"] { background: #0b4b69; }
-[data-theme="dark"] .soft-brand > i { background: #0b4b69; color: #e7edf0; }
+[data-theme="dark"] .edasan-language-options a[aria-current="true"] { background: var(--edasan-accent-surface); }
+[data-theme="dark"] .soft-brand > i { background: var(--edasan-accent-surface); color: #e7edf0; }
 [data-theme="dark"] .edasan-page-hero.v15-hub-hero,
-[data-theme="dark"] :is(.soft-managed-modules, .project-modules, .project-architecture, .soft-values, .v16-ai-approach) { background: #26343e; }
+[data-theme="dark"] :is(.soft-managed-modules, .project-modules, .project-architecture, .soft-values, .v16-ai-approach) { background: var(--edasan-surface); }
 [data-theme="dark"] :is(.v15-insight, .entry-followup),
 [data-theme="dark"] .soft-page :is(.soft-page-cta, .company-competence aside),
-[data-theme="dark"] .home-v15 .v15-home-cta { background: #0b4b69; color: #e7edf0; }
+[data-theme="dark"] .home-v15 .v15-home-cta { background: var(--edasan-accent-surface); color: #e7edf0; }
 [data-theme="dark"] .edasan-offer-grid > .edasan-offer-card,
 [data-theme="dark"] .soft-page .company-competence > .edasan-offer-grid > .edasan-offer-card,
 [data-theme="dark"] .soft-page .soft-values .edasan-offer-grid > .edasan-offer-card,
-[data-theme="dark"] .soft-page .entry-offers > .edasan-card-grid > article { background: #26343e; border-color: var(--soft-line); color: var(--soft-ink); }
-[data-theme="dark"] .edasan-offer-grid > a.edasan-offer-card:hover { background: #2e414d; border-color: #7b9caa; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+[data-theme="dark"] .soft-page .entry-offers > .edasan-card-grid > article { background: var(--edasan-surface); border-color: var(--soft-line); color: var(--soft-ink); }
+[data-theme="dark"] .edasan-offer-grid > a.edasan-offer-card:hover { background: var(--edasan-surface-hover); border-color: #7b9caa; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
 [data-theme="dark"] main :is(.soft-shell, .soft-hero-content) p { color: var(--soft-muted); }
 [data-theme="dark"] main :is(.soft-shell, .soft-hero-content) :is(h1, h2, h3) { color: var(--soft-ink); }
 [data-theme="dark"] .home-v15 .soft-hero h1 em { color: #b5d5e2; }
@@ -90,19 +94,19 @@ html[data-theme="dark"] {
 [data-theme="dark"] :is(.edasan-offer-list, .edasan-offer-list > article, .v15-related, .v18-example, .v18-entry-note, .v18-case-strip, .v15-detail-outcomes, .v16-ai-benefit-list, .v16-ai-benefit-list > article, .v17-careers-list, .v17-careers-list > p, .v17-careers-contact, .company-profile) { border-color: var(--soft-line); }
 [data-theme="dark"] .soft-page :is(.entry-offers li, .edasan-project-types, .v15-detail-outcomes li, .soft-contact-copy dt, .soft-contact-copy dd, .project-progress li small) { color: var(--soft-muted); border-color: var(--soft-line); }
 [data-theme="dark"] .soft-page .project-progress li { border-color: var(--soft-line); }
-[data-theme="dark"] .soft-page .project-progress li::before { background: #26343e; border-color: #93c6dc; }
-[data-theme="dark"] .project-architecture-map article { background: #073b57; border-color: var(--soft-line); color: var(--soft-ink); }
-[data-theme="dark"] .project-architecture-map article.core { background: #0b4b69; color: var(--soft-ink); }
+[data-theme="dark"] .soft-page .project-progress li::before { background: var(--edasan-surface); border-color: #93c6dc; }
+[data-theme="dark"] .project-architecture-map article { background: var(--edasan-page-bg); border-color: var(--soft-line); color: var(--soft-ink); }
+[data-theme="dark"] .project-architecture-map article.core { background: var(--edasan-accent-surface); color: var(--soft-ink); }
 [data-theme="dark"] .project-architecture-map > i { background: var(--soft-line); }
-[data-theme="dark"] .soft-page .soft-contact-panel { background: #26343e; border-color: var(--soft-line); box-shadow: none; }
+[data-theme="dark"] .soft-page .soft-contact-panel { background: var(--edasan-surface); border-color: var(--soft-line); box-shadow: none; }
 [data-theme="dark"] .soft-page .soft-contact-copy dl > div { border-color: var(--soft-line); }
-[data-theme="dark"] .edasan-contact-form :is(input, textarea) { background: #073b57; border-color: #718994; color: var(--soft-ink); }
+[data-theme="dark"] .edasan-contact-form :is(input, textarea) { background: var(--edasan-page-bg); border-color: #718994; color: var(--soft-ink); }
 [data-theme="dark"] .edasan-contact-form :is(input, textarea)::placeholder { color: #b6c6ce; }
 [data-theme="dark"] .edasan-contact-feedback.error { color: #ffbcb6; }
 [data-theme="dark"] :is(.soft-btn, .soft-header-cta),
-[data-theme="dark"] .v15-header nav > .soft-mobile-cta { background: #0b4b69; border: 1px solid #7898a8; color: #e7edf0; }
+[data-theme="dark"] .v15-header nav > .soft-mobile-cta { background: var(--edasan-accent-surface); border: 1px solid #7898a8; color: #e7edf0; }
 [data-theme="dark"] .soft-btn-ghost { background: transparent; }
-[data-theme="dark"] .v15-footer { background: #06324a; color: var(--soft-ink); }
+[data-theme="dark"] .v15-footer { background: var(--edasan-footer-bg); color: var(--soft-ink); }
 [data-theme="dark"] .v15-footer .soft-footer-grid > div > strong { color: #e7edf0; }
 [data-theme="dark"] :is(a, button, input, textarea):focus-visible { outline-color: #a8d5e8; }
 /* Match the product concept preview to the surrounding dark interface. */
@@ -111,13 +115,13 @@ html[data-theme="dark"] {
 [data-theme="dark"] .automotive-ui-main,
 [data-theme="dark"] .automotive-ui-summary article,
 [data-theme="dark"] .automotive-ui-work > div,
-[data-theme="dark"] .automotive-ui-work > aside { background: #26343e; border-color: var(--soft-line); color: var(--soft-ink); }
-[data-theme="dark"] .automotive-product-ui > div > aside { background: #073b57; }
+[data-theme="dark"] .automotive-ui-work > aside { background: var(--edasan-surface); border-color: var(--soft-line); color: var(--soft-ink); }
+[data-theme="dark"] .automotive-product-ui > div > aside { background: var(--edasan-page-bg); }
 [data-theme="dark"] .automotive-product-ui :is(span, strong, b, small, button) { color: var(--soft-ink); }
 [data-theme="dark"] .automotive-ui-work article { border-color: var(--soft-line); }
 [data-theme="dark"] .automotive-ui-work article b,
 [data-theme="dark"] .automotive-ui-work > aside span,
-[data-theme="dark"] .automotive-ui-top button { background: #0b4b69; }
+[data-theme="dark"] .automotive-ui-top button { background: var(--edasan-accent-surface); }
 [data-theme="dark"] .automotive-ui-summary i { background: #647d8b; }
-@media (max-width: 1699px) { [data-theme="dark"] .v15-header nav { background: #073b57; } }
+@media (max-width: 1699px) { [data-theme="dark"] .v15-header nav { background: var(--edasan-page-bg); } }
 @media (prefers-reduced-motion: reduce) { .edasan-header-button { transition: none; } }
