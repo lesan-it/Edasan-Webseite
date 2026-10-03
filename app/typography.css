@@ -1,0 +1,63 @@
+/* Shared readable text scale, applied after the page-specific layouts. */
+:root {
+  --soft-muted: #4d626c;
+  --edasan-body-size: clamp(18px, 1.4vw, 19px);
+}
+body { font-size: 18px; font-weight: 500; }
+
+body :is(.soft-page, .home-v15) :is(.soft-shell, .soft-hero-content) p {
+  font-size: var(--edasan-body-size);
+  font-weight: 500;
+  line-height: 1.65;
+}
+.edasan-page-hero .v15-page-hero h1 {
+  font-size: clamp(54px, 5.8vw, 82px);
+  font-weight: 650;
+}
+body .edasan-page-hero .v15-page-hero > p { font-size: 20px; }
+.home-v15 .soft-hero h1 { font-size: clamp(54px, 5.6vw, 78px); }
+body .home-v15 .soft-hero-content > p { font-size: 20px; }
+
+.soft-page :is(.edasan-offer-list, .v16-ai-benefit-list, .v15-experience-list) h3 {
+  font-size: var(--edasan-row-heading-size);
+  font-weight: 650;
+}
+.soft-page :is(.v15-related, .v17-careers-contact, .soft-contact-copy, .v16-contact-panel, .legal-card) h2 {
+  font-weight: 650;
+}
+.soft-page :is(.edasan-project-types, .v18-case-strip li, .entry-offers li) {
+  font-size: var(--edasan-body-size);
+  font-weight: 500;
+  line-height: 1.65;
+}
+.soft-page .company-profile-facts > span { font-size: 17px; }
+.soft-page .company-profile-facts small { font-size: 16px; }
+.soft-page .project-progress li strong { font-size: 19px; }
+.soft-page .project-progress li small { font-size: 16px; }
+.soft-page .project-architecture-map article strong { font-size: 18px; }
+.soft-page :is(.v18-entry-note, .v18-case-strip) > strong { font-size: 21px; }
+
+body :is(.soft-page, .home-v15) .soft-btn,
+.soft-page :is(.edasan-offer-copy a, .v15-related a, .v15-detail-outcomes a),
+.home-v15 .v15-insight-links a { font-size: 16px; line-height: 1.5; }
+.soft-page .edasan-back-link { font-size: 16px; }
+.soft-page .edasan-contact-form label { font-size: 16px; }
+.soft-page .edasan-contact-form label span { font-weight: 500; }
+.soft-page .edasan-contact-form :is(input, textarea) { font-size: 18px; font-weight: 500; }
+body .soft-page .edasan-contact-form .edasan-contact-hint { font-size: 16px; }
+.soft-page .soft-contact-copy dt { font-size: 16px; font-weight: 600; }
+.soft-page .soft-contact-copy dd { font-size: 18px; }
+.soft-page .v16-contact-address { font-size: 18px; }
+
+.v15-footer .soft-footer-grid > div:first-child > p,
+.v15-footer .soft-footer-grid > div > :is(a, span, strong) { font-size: 16px; line-height: 1.6; }
+.v15-footer .soft-footer-grid > div:first-child > p,
+.v15-footer .soft-footer-grid > div > :is(a, span) { color: #bdd0d8; }
+.v15-footer .soft-footer-bottom { font-size: 15px; color: #b5cbd4; }
+
+@media (max-width: 560px) {
+  .edasan-page-hero .v15-page-hero h1 { font-size: clamp(45px, 11.3vw, 58px); }
+  .home-v15 .soft-hero h1 { font-size: clamp(42px, 10.5vw, 53px); }
+  body .edasan-page-hero .v15-page-hero > p,
+  body .home-v15 .soft-hero-content > p { font-size: 18px; }
+}

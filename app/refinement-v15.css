@@ -146,10 +146,10 @@
 .edasan-contact-feedback { margin: 0; color: var(--soft-navy); font-size: 15px; line-height: 1.6; }
 .edasan-contact-feedback.error { color: #8b3434; }
 .soft-contact-page a:focus-visible,.edasan-contact-form button:focus-visible { outline: 2px solid #2e7897; outline-offset: 4px; }
-.legal-page .legal-card p,.legal-page .legal-card li { font-size: 16px !important; line-height: 1.7 !important; }
+.legal-page .legal-card p,.legal-page .legal-card li { font-size: var(--edasan-body-size) !important; line-height: 1.7 !important; }
 .legal-page .legal-card h2:first-child { margin-top: 0 !important; }
 .legal-page .legal-card a { color: var(--soft-navy); text-decoration: underline; text-underline-offset: 3px; }
-.legal-page .legal-card .v16-legal-date { margin-top: 42px; font-size: 14px !important; }
+.legal-page .legal-card .v16-legal-date { margin-top: 42px; font-size: 16px !important; }
 
 .v17-careers-openings { padding-top: 100px; padding-bottom: 105px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
 .v17-careers-openings h2 { margin: 15px 0 0; font-size: clamp(36px,4vw,55px); line-height: 1.1; letter-spacing: -.05em; font-weight: 620; }

@@ -5,6 +5,7 @@ import "./refinement-v15.css";
 import "./inner-pages.css";
 import "./layout-system.css";
 import "./offer-cards.css";
+import "./typography.css";
 import SiteChrome from "./site-chrome";
 
 export const metadata: Metadata = {

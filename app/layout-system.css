@@ -13,8 +13,8 @@
   --edasan-content-columns: minmax(0, 5fr) minmax(0, 7fr);
   --edasan-copy-width: 60ch;
   --edasan-card-padding: var(--edasan-space-8);
-  --edasan-heading-size: clamp(30px, 3.2vw, 44px);
-  --edasan-row-heading-size: clamp(23px, 2.4vw, 31px);
+  --edasan-heading-size: clamp(33px, 3.5vw, 48px);
+  --edasan-row-heading-size: clamp(25px, 2.6vw, 34px);
 }
 
 /* A common type scale below the unchanged page heroes. */
@@ -27,7 +27,7 @@
   font-size: var(--edasan-heading-size);
   line-height: 1.15;
   letter-spacing: -.045em;
-  font-weight: 620;
+  font-weight: 650;
   text-wrap: pretty;
 }
 .soft-page :is(.v15-related, .v17-careers-contact) h2 {
@@ -193,7 +193,7 @@
   margin-block: 0;
 }
 :is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3) {
-  font-size: clamp(23px, 2.2vw, 28px);
+  font-size: clamp(25px, 2.3vw, 30px);
   line-height: 1.2;
   letter-spacing: -.035em;
   overflow-wrap: anywhere;
@@ -285,7 +285,7 @@
 .edasan-legal-page .edasan-legal-body { padding-block: var(--edasan-section-space); }
 .edasan-legal-page .legal-card p { max-width: 75ch; font-size: 16px; line-height: 1.7; }
 .edasan-legal-page .legal-card { margin-inline: 0 !important; }
-.edasan-legal-page .legal-card h2 { margin-block: 40px 16px !important; font-size: 25px !important; line-height: 1.25; letter-spacing: -.03em; }
+.edasan-legal-page .legal-card h2 { margin-block: 40px 16px !important; font-size: 28px !important; line-height: 1.25; letter-spacing: -.03em; }
 .soft-page .v16-contact-panel > p { margin-bottom: var(--edasan-space-8); }
 .soft-page .edasan-contact-fields { gap: var(--edasan-space-6); }
 .soft-page .edasan-contact-form { gap: var(--edasan-space-6); }
