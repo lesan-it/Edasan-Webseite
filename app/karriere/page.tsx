@@ -30,9 +30,9 @@ export default function CareersPage() {
       </div>
     </section>
 
-    <section className="soft-shell v17-careers-contact">
-      <div><h2>Fragen zu Edasan als Arbeitgeber?</h2><p>Schreiben Sie uns direkt. Wir freuen uns auf Ihre Nachricht.</p></div>
-      <a className="soft-btn soft-btn-dark" href={`mailto:${company.email}?subject=Karriere%20bei%20Edasan`}>E-Mail schreiben</a>
+    <section className="soft-shell v17-careers-contact edasan-split">
+      <h2>Fragen zu Edasan als Arbeitgeber?</h2>
+      <div className="edasan-offer-copy"><p>Schreiben Sie uns direkt. Wir freuen uns auf Ihre Nachricht.</p><a className="soft-btn soft-btn-dark" href={`mailto:${company.email}?subject=Karriere%20bei%20Edasan`}>E-Mail schreiben</a></div>
     </section>
   </main>;
 }

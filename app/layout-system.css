@@ -13,6 +13,29 @@
   --edasan-content-columns: minmax(0, 5fr) minmax(0, 7fr);
   --edasan-copy-width: 60ch;
   --edasan-card-padding: var(--edasan-space-8);
+  --edasan-heading-size: clamp(30px, 3.2vw, 44px);
+  --edasan-row-heading-size: clamp(23px, 2.4vw, 31px);
+}
+
+/* A common type scale below the unchanged page heroes. */
+:is(.soft-page, .home-v15) :is(.v15-section-heading, .v15-insight,
+  .v15-detail-promise, .v15-detail-outcomes, .v16-ai-benefits, .v16-ai-approach,
+  .v18-example, .soft-company-intro, .soft-managed-intro, .company-competence > header,
+  .company-profile-name, .soft-section-head, .project-architecture,
+  .project-progress, .entry-followup, .v17-careers-openings,
+  .soft-page-cta, .v15-home-cta) h2 {
+  font-size: var(--edasan-heading-size);
+  line-height: 1.15;
+  letter-spacing: -.045em;
+  font-weight: 620;
+  text-wrap: pretty;
+}
+.soft-page :is(.v15-related, .v17-careers-contact) h2 {
+  margin: 0;
+  font-size: var(--edasan-row-heading-size);
+  line-height: 1.2;
+  letter-spacing: -.04em;
+  text-wrap: pretty;
 }
 
 :is(.soft-page, .home-v15) .edasan-split {
@@ -60,6 +83,10 @@
 }
 .soft-page .v18-case-strip ul { gap: var(--edasan-space-6); }
 .soft-page .v15-detail-promise { padding-block: var(--edasan-section-space); }
+/* Adjacent white sections share one gap instead of adding two paddings. */
+.soft-page .v15-hub-section + .v15-detail-promise,
+.soft-page .automotive-preview + .edasan-project-context { padding-top: 0; }
+.soft-page .v15-detail-promise + .v15-hub-section { padding-top: var(--edasan-space-16); }
 .soft-page :is(.v15-related, .v15-detail-outcomes, .v17-careers-contact) {
   padding-block: var(--edasan-space-10);
   gap: var(--edasan-column-gap);
@@ -82,15 +109,21 @@
 
 /* Quiet offer rows share the content columns used by benefits and examples. */
 .edasan-offer-list { border-top: 1px solid #cbdadf; }
-.edasan-offer-list > article {
+.soft-page .edasan-offer-list > article {
+  min-height: 0;
   padding-block: var(--edasan-space-8);
+  padding-inline: 0;
+  border: 0;
   border-bottom: 1px solid #cbdadf;
+  border-radius: 0;
+  background: transparent;
 }
-.edasan-offer-list h3 {
+.soft-page .edasan-offer-list h3 {
   margin: 0;
-  font-size: clamp(23px, 2.4vw, 31px);
+  font-size: var(--edasan-row-heading-size);
   line-height: 1.2;
   letter-spacing: -.04em;
+  text-wrap: pretty;
 }
 .edasan-offer-copy {
   display: flex;
@@ -105,7 +138,7 @@
   font-size: 17px;
   line-height: 1.65;
 }
-.edasan-offer-copy a {
+.edasan-offer-copy a:not(.soft-btn) {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -117,7 +150,7 @@
   line-height: 1.5;
   transition: color .2s cubic-bezier(.16, 1, .3, 1);
 }
-.edasan-offer-copy a:hover { color: var(--soft-blue); }
+.edasan-offer-copy a:not(.soft-btn):hover { color: var(--soft-blue); }
 :is(.v15-software, .v15-consulting) a:focus-visible { outline: 2px solid #2e7897; outline-offset: 4px; }
 .edasan-project-types {
   display: grid;
@@ -147,7 +180,7 @@
 .soft-page .edasan-card-grid--detailed { --edasan-card-rows: 5; }
 :is(.soft-page, .home-v15) .edasan-card-grid > article {
   min-width: 0;
-  min-height: 230px;
+  min-height: 0;
   padding: var(--edasan-card-padding);
   display: flex;
   flex-direction: column;
@@ -159,7 +192,13 @@
 :is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3, p, ul, div, a) {
   margin-block: 0;
 }
-:is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3) { line-height: 1.2; }
+:is(.soft-page, .home-v15) .edasan-card-grid > article > :is(h2, h3) {
+  font-size: clamp(23px, 2.2vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
 :is(.soft-page, .home-v15) .edasan-card-grid > article > p {
   max-width: var(--edasan-copy-width);
   font-size: 16px;
@@ -185,7 +224,7 @@
   border-block: 1px solid #cbdadf;
 }
 .home-v15 .edasan-card-grid--paths > article {
-  min-height: 260px;
+  min-height: 0;
   padding: var(--edasan-space-8);
   border: 0;
   border-radius: 0;
@@ -208,10 +247,45 @@
 .soft-page .v15-product :is(h3, p, a) { margin-block: 0; }
 .soft-page .v15-product p { max-width: var(--edasan-copy-width); }
 .soft-page .v15-product a { margin-top: auto; }
-.soft-page .company-profile-copy { padding: var(--edasan-space-12); }
-.soft-page .company-profile-copy h3 { margin-bottom: var(--edasan-space-6); }
+.soft-page .company-profile {
+  min-height: 0;
+  padding-block: var(--edasan-space-8);
+  border-block: 1px solid #cbdadf;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+.soft-page .company-profile-copy { padding: 0; }
+.soft-page .company-profile-name h2 { margin: 0 0 var(--edasan-space-4); }
+.soft-page .company-profile-name p { margin: 0; color: var(--soft-muted); font-size: 16px; line-height: 1.65; }
+.soft-page .company-competence > .edasan-offer-list {
+  display: block;
+  border: 0;
+  border-top: 1px solid #cbdadf;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+.soft-page .company-competence .edasan-offer-copy p { font-size: 17px; line-height: 1.65; }
+.soft-page .soft-values .soft-shell > .edasan-card-grid { margin-top: 0; }
 .soft-page .v16-contact-panel { padding: var(--edasan-space-10); }
 .soft-page .v16-contact-panel > h2 { margin-block: 0 var(--edasan-space-6); }
+.soft-page :is(.v16-contact-panel, .soft-contact-copy) > h2 {
+  font-size: var(--edasan-row-heading-size);
+  line-height: 1.2;
+  letter-spacing: -.04em;
+}
+.soft-page .soft-contact-copy dl > div { grid-template-columns: minmax(80px, .3fr) minmax(0, 1fr); gap: 16px; padding-block: 20px; }
+.soft-page .soft-contact-copy :is(dt, dd) { line-height: 1.6; overflow-wrap: anywhere; }
+.soft-page .project-architecture-map { gap: 12px; }
+.soft-page .project-architecture-map article { flex: 1; min-width: 0; min-height: 112px; }
+.soft-page .project-architecture-map article.core { flex: 1.4; }
+.soft-page .project-architecture-map > i { flex: 0 0 20px; }
+.soft-page .project-progress li { padding-right: 20px; }
+.edasan-legal-page .edasan-legal-body { padding-block: var(--edasan-section-space); }
+.edasan-legal-page .legal-card p { max-width: 75ch; font-size: 16px; line-height: 1.7; }
+.edasan-legal-page .legal-card { margin-inline: 0 !important; }
+.edasan-legal-page .legal-card h2 { margin-block: 40px 16px !important; font-size: 25px !important; line-height: 1.25; letter-spacing: -.03em; }
 .soft-page .v16-contact-panel > p { margin-bottom: var(--edasan-space-8); }
 .soft-page .edasan-contact-fields { gap: var(--edasan-space-6); }
 .soft-page .edasan-contact-form { gap: var(--edasan-space-6); }
@@ -223,6 +297,7 @@
   gap: var(--edasan-space-10);
 }
 :is(.soft-page, .home-v15) :is(.soft-page-cta, .v15-home-cta) h2 { margin: 0; }
+.soft-page .soft-section + .soft-page-cta { margin-top: 0; }
 
 @media (max-width: 920px) {
   :root { --edasan-section-space: 72px; --edasan-column-gap: 32px; }
@@ -232,7 +307,10 @@
     min-height: 0;
     gap: var(--edasan-space-4);
   }
-  .soft-page .company-profile-copy { padding: var(--edasan-space-8); }
+  .soft-page .company-profile-copy { padding: 0; }
+  .soft-page .project-architecture-map { display: grid; grid-template-columns: 1fr; }
+  .soft-page .project-architecture-map > i { width: 1px; height: 14px; min-width: 0; margin-inline: auto; }
+  .soft-page .project-architecture-map article { min-height: 80px; }
   .home-v15 .edasan-card-grid--paths { grid-template-columns: minmax(0, 1fr); }
   .home-v15 .edasan-card-grid--paths > article,
   .home-v15 .edasan-card-grid--paths > article:first-child {
@@ -245,6 +323,15 @@
     border-left: 0;
     border-top: 1px solid #cbdadf;
   }
+  .home-v15 .edasan-card-grid--paths > article > a { align-self: flex-start; }
+  .v15-footer .soft-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    padding-bottom: 40px;
+  }
+  .v15-footer .soft-footer-grid > div { min-width: 0; margin-bottom: 0; }
+  .v15-footer .soft-footer-grid > div:first-child,
+  .v15-footer .soft-footer-grid > div:last-child { grid-column: 1 / -1; }
 }
 
 @media (max-width: 560px) {
@@ -256,6 +343,7 @@
     min-height: 0;
     padding: var(--edasan-card-padding);
   }
+  :is(.soft-page, .home-v15) .edasan-card-grid > article > a { align-self: flex-start; }
   .home-v15 .edasan-card-grid--paths > article,
   .home-v15 .edasan-card-grid--paths > article:first-child {
     padding: var(--edasan-space-6) 0;
@@ -266,5 +354,6 @@
   }
   .soft-page .soft-values .edasan-card-grid--plain > article { padding-inline: 0; }
   .soft-page .v16-contact-panel { padding: var(--edasan-space-6); }
+  .soft-page .soft-contact-copy dl > div { grid-template-columns: minmax(70px, .3fr) minmax(0, 1fr); gap: 12px; }
   :is(.soft-page, .home-v15) :is(.soft-page-cta, .v15-home-cta) { padding: var(--edasan-space-8) var(--edasan-space-6); }
 }

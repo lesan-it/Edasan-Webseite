@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../../page-hero";
+import { OfferRows } from "../../content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/services/managed-services/" }, title: "Managed IT Services", description: "Planbarer IT-Betrieb und persönlicher Support für Schweizer Unternehmen." };
 
@@ -19,10 +20,14 @@ export default function ManagedPage() {
 
     <section className="soft-managed-modules"><div className="soft-shell">
       <div className="soft-section-head compact edasan-split"><div><h2>Wir kümmern uns darum.</h2></div><p>Wählen Sie einzelne Bausteine oder einen durchgängigen Service. Wir richten die Zusammenarbeit an Ihrer Organisation aus.</p></div>
-      <div className="soft-module-grid edasan-card-grid">{modules.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div>
+      <OfferRows offers={modules.map(([title, text]) => ({ title, text }))} />
     </div></section>
 
-    <section className="soft-shell soft-section soft-service-levels edasan-split"><header><h2>Passend zu Ihrem Alltag.</h2></header><div className="edasan-card-grid"><article><h3>Essential</h3><p>Eine klare Basis für kleine und fokussierte Teams.</p></article><article><h3>Business</h3><p>Proaktiver Betrieb mit regelmässiger Weiterentwicklung.</p></article><article><h3>Custom</h3><p>Individuell für anspruchsvolle Systeme und Anforderungen.</p></article></div></section>
+    <section className="soft-shell soft-section edasan-service-levels"><header className="v15-section-heading"><h2>Passend zu Ihrem Alltag.</h2></header><OfferRows offers={[
+      { title: "Essential", text: "Eine klare Basis für kleine und fokussierte Teams." },
+      { title: "Business", text: "Proaktiver Betrieb mit regelmässiger Weiterentwicklung." },
+      { title: "Custom", text: "Individuell für anspruchsvolle Systeme und Anforderungen." },
+    ]} /></section>
 
     <section className="soft-shell soft-page-cta"><div><h2>Weniger Reaktion. Mehr Verlässlichkeit.</h2></div><Link className="soft-btn soft-btn-light" href="/kontakt">Betrieb besprechen <span>↗</span></Link></section>
   </main>;
