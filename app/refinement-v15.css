@@ -1,17 +1,19 @@
 /* v1.5: quieter hierarchy on top of the established Edasan identity. */
 .v15-header {
-  height: 76px;
+  height: 88px;
   will-change: auto;
   border-bottom-color: #dce5e9;
   box-shadow: none;
   transform: none;
   transition: background .25s cubic-bezier(.16,1,.3,1);
 }
-.v15-header .soft-header-inner { width: min(1240px, calc(100% - 48px)); }
-.v15-header nav { gap: clamp(13px, 1.5vw, 22px); }
-.v15-header nav > a { font-size: 14px; font-weight: 600; white-space: nowrap; }
-.v15-header nav > a::after { bottom: -8px; height: 1px; }
-.v15-header .soft-header-cta { min-width: 108px; min-height: 43px; padding-inline: 17px; font-size: 14px; }
+.v15-header .soft-header-inner { width: min(1440px, calc(100% - 64px)); gap: 28px; }
+.v15-header .soft-brand { min-width: auto; flex-shrink: 0; }
+.v15-header nav { gap: clamp(20px, 1.5vw, 28px); }
+.v15-header nav > a { display: inline-flex; align-items: center; min-height: 48px; font-size: 18px; font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.v15-header nav > .soft-mobile-cta { display: none; }
+.v15-header nav > a::after { bottom: 0; height: 1px; }
+.v15-header .soft-header-cta { flex-shrink: 0; min-width: 124px; min-height: 48px; padding-inline: 22px; font-size: 17px; }
 .v15-header .soft-header-cta:hover { box-shadow: 0 8px 18px rgba(11,63,87,.12); }
 .v15-header a:focus-visible,.v15-header button:focus-visible,
 .home-v15 a:focus-visible,.v15-hub a:focus-visible {
@@ -189,15 +191,18 @@
 .v18-company .company-competence aside p { font-size: 16px; line-height: 1.6; }
 .v18-company a:focus-visible,.v16-ai a:focus-visible { outline: 2px solid #2e7897; outline-offset: 4px; }
 
-@media (max-width: 1180px) {
-  .v15-header nav { position: absolute; top: calc(100% + 1px); right: 0; left: 0; max-height: calc(100vh - 90px); padding: 12px; display: none; overflow-y: auto; align-items: stretch; flex-direction: column; gap: 0; border: 1px solid #d6e1e5; border-radius: 0 0 14px 14px; background: #fff; box-shadow: 0 20px 40px rgba(15,55,73,.12); }
+@media (max-width: 1399px) {
+  .v15-header nav { position: absolute; top: calc(100% + 1px); right: 0; left: 0; max-height: calc(100dvh - 110px); padding: 12px; display: none; overflow-y: auto; align-items: stretch; flex-direction: column; gap: 0; border: 1px solid #d6e1e5; border-radius: 0 0 14px 14px; background: #fff; box-shadow: 0 20px 40px rgba(15,55,73,.12); }
   .v15-header nav.open { display: flex; }
-  .v15-header nav > a { padding: 15px 10px; border-bottom: 1px solid #e7eef0; font-size: 16px; }
+  .v15-header nav > a { padding: 16px 12px; border-bottom: 1px solid #e7eef0; font-size: 18px; white-space: normal; }
   .v15-header nav > a::after { display: none; }
   .v15-header .soft-mobile-cta { display: block !important; margin: 8px 0 0; border: 0; border-radius: 8px; background: var(--soft-navy); color: #fff; text-align: center; }
   .v15-header .soft-header-cta { display: none; }
-  .v15-header .soft-menu { width: 44px; height: 44px; padding: 11px; display: flex; flex-direction: column; justify-content: center; gap: 7px; border: 1px solid #d6e1e5; border-radius: 9px; background: #fff; cursor: pointer; }
+  .v15-header .soft-menu { flex-shrink: 0; width: 48px; height: 48px; padding: 12px; display: flex; flex-direction: column; justify-content: center; gap: 7px; border: 1px solid #d6e1e5; border-radius: 9px; background: #fff; cursor: pointer; }
   .v15-header .soft-menu i { height: 1px; background: var(--soft-navy); }
+}
+
+@media (max-width: 1180px) {
   .v15-footer .soft-footer-grid { gap: 30px; }
 }
 
@@ -212,7 +217,7 @@
   .v16-ai-benefits { padding-top: 82px; padding-bottom: 86px; }
   .v16-ai-benefit-list article { grid-template-columns: 1fr; gap: 12px; }
   .v16-ai-approach-inner { grid-template-columns: 1fr; gap: 24px; }
-  .v15-header { height: 69px; }
+  .v15-header { height: 76px; }
   .v15-header .soft-header-inner { width: calc(100% - 28px); }
   .home-v15 .soft-hero { min-height: 590px; }
   .home-v15 .soft-hero-content { padding: 88px 28px 90px; }

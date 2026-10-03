@@ -41,7 +41,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           {navigation.map(([label, href]) => {
             const productDetail = pathname === "/projekte/automotive-platform";
             const active = pathname === href || (pathname.startsWith(`${href}/`) && !(productDetail && href === "/projekte")) || (productDetail && href === "/software");
-            return <Link key={href} className={active ? "active" : ""} href={href}>{label}</Link>;
+            return <Link key={href} className={active ? "active" : ""} aria-current={active ? "page" : undefined} href={href}>{label}</Link>;
           })}
           <Link className="soft-mobile-cta" href="/kontakt">Kontakt</Link>
         </nav>
