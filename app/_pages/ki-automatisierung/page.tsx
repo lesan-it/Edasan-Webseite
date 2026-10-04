@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/app/page-hero";
+import { OfferCards } from "@/app/content-sections";
 
 export const metadata: Metadata = { alternates: { canonical: "/ki-automatisierung/" },
   title: "KI & Automatisierung",
@@ -11,6 +12,7 @@ const benefits = [
   ["Wissen schneller finden", "Freigegebene Informationen aus Dokumenten und bestehenden Systemen im Arbeitsalltag nutzbar machen."],
   ["Routinearbeit reduzieren", "Wiederkehrende Aufgaben und Dokumentenprozesse gezielt vereinfachen."],
   ["Daten unter Kontrolle behalten", "Zugriffe und externe Verbindungen passend zu Ihren Anforderungen gestalten."],
+  ["Entscheidungen besser vorbereiten", "Informationen übersichtlich zusammenfassen und vergleichen, damit Ihr Team Entscheidungen gezielter vorbereiten kann."],
 ];
 
 export default function IntelligencePage() {
@@ -20,9 +22,7 @@ export default function IntelligencePage() {
     <section className="soft-shell v16-ai-benefits"><header>
 
       <h2>Praktischer Nutzen für Ihr Team.</h2>
-    </header><div className="v16-ai-benefit-list">
-      {benefits.map(([title, description]) => <article className="edasan-split" key={title}><h3>{title}</h3><p>{description}</p></article>)}
-    </div></section>
+    </header><OfferCards offers={benefits.map(([title, text]) => ({ title, text }))} /></section>
 
     <section className="soft-shell v18-example v18-ai-example edasan-split"><div><h2>Antworten aus internem Wissen.</h2></div><p>Eine Frage zu einer internen Anleitung: Statt Ordner zu durchsuchen, kann eine passende Lösung relevante Stellen in freigegebenen Dokumenten mit Quellenhinweis zeigen. Welche Informationen sie nutzt, wird vorher festgelegt.</p></section>
 
